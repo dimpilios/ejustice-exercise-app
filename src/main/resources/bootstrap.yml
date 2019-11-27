@@ -1,0 +1,7 @@
+logging:
+  file: task-tracker.log
+  path: ${HOME}/pilios-logs/task-tracker/
+
+spring:
+  application:
+    name: task-tracker

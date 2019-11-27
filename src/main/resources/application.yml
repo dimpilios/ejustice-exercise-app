@@ -1,0 +1,42 @@
+management:
+  endpoint:
+    health:
+      show-details: always
+    logfile:
+      external-file: ${logging.path}/${logging.file}
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+server:
+  servlet:
+    context-path: /task-tracker
+
+spring:
+
+  main:
+    allow-bean-definition-overriding: true
+
+  datasource:
+    platform: postgres
+    driver-class-name: org.postgresql.Driver
+    jpa:
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
+      show-sql: false
+      hibernate:
+        ddl-auto: validate
+      properties:
+        hibernate:
+          temp.use_jdbc_metadata_defaults: false
+
+    url: jdbc:postgresql://localhost:5432/task_tracker_db
+      username: postgres
+      password: postgres
+      tomcat:
+        max-active: 9
+        max-idle: 5
+
+logging:
+  file: task-tracker.log
+  path: ${HOME}/pilios-logs/task-tracker/
